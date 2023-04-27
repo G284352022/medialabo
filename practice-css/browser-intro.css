@@ -8,12 +8,11 @@ p.info {
 }
 
 h1 {
-	text-shadow: navy;
+	text-shadow: 0px 0px 6px navy;
 	color: #ffffff;
 }
 
 h2 {
-	border: solid 1px black;
 	margin: 5px;
 	font-family: cursive;
 	color: #3f3faf;
@@ -34,11 +33,8 @@ div#zentai > div {
 	background-color: #ffefaf;
 }
 
-img.icon{
+img{
 	float: right;
 
-    width: 100px;
-    height: 100px;
     margin: 10px 0 10px 10px;
-
 }
