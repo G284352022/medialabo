@@ -1,5 +1,15 @@
 h1{
     text-align: center;
-    color: purple;
-    border-bottom: dashed 5px #afafaf;
+    font-size: 200%;
+    color: #fdfdfd;
+    background-color: rebeccapurple;
+
+}
+
+p{
+    background-color: #ccffcc;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+
+
 }
