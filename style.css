@@ -1,6 +1,8 @@
 h1{
     font-size: 200%;
     text-align: center;
+    color: #fdfdfd;
+    background-color: #004000;
 }
 
 h2{
@@ -8,13 +10,16 @@ h2{
     padding-left: 5px;
     padding-bottom: 5px;
     background: #fdfdfd;
-    border: solid purple;
-    border-top: solid purple 6px;
+    outline: solid #000000;
+    border-top: solid #000000 6px;
     
 }
 
 h3{
     background-color: rgb(188, 202, 239);
+    border-right: solid #000060;
+    border-bottom: solid #000060;
+
 }
 
 p{
@@ -24,8 +29,28 @@ p{
 
 .note{
     color: green;
+    background-color: #ffffbb;
+    border-right: solid #006000;
+    border-bottom: solid #006000;
+    padding: 8px 8px 8px 8px;
 }
 
 .item{
-    border-top: dashed purple;
+    background-color: #ccffcc;
+    border-top: dashed purple 3px;
+}
+
+ul{
+    background-color: #ccffcc;
+    border-right: solid #000060;
+    border-bottom: solid #000060;
+
+}
+
+a:link{
+    color: blue;
+}
+
+a:visited{
+    color: rebeccapurple;
 }
