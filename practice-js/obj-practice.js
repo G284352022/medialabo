@@ -16,3 +16,11 @@ let gakka = [
 
 //////////////// ここから下にプログラムを書きたそう!
 
+
+console.log(campus.address);
+for(let b of campus.buildingD){
+	console.log(b);
+}
+for(b of gakka){
+	console.log(b.name);//(b) → name と ename を表示
+}
