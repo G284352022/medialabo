@@ -94,3 +94,9 @@ let data = {
 1000 ... 趣味・教育
 1100 ... 福祉
 */
+
+for(Name of data.list.g1){
+  console.log(Name.title);//番組名を出力
+
+}
+
