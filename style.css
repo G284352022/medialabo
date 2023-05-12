@@ -23,7 +23,7 @@ h3{
 }
 
 p{
-    text-indent: 4%;
+    text-indent: 2%;
 
 }
 
@@ -38,12 +38,14 @@ p{
 .item{
     background-color: #ccffcc;
     border-top: dashed purple 3px;
+    padding: 7px 0px 7px 0px;
+
 }
 
 ul{
     background-color: #ccffcc;
-    border-right: solid #000060;
-    border-bottom: solid #000060;
+    border-right: solid #003030;
+    border-bottom: solid #003030;
 
 }
 
