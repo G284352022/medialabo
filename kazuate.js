@@ -17,6 +17,9 @@ hantei();
 function hantei() {
     // 将来ここでは 4 ではなくテキストボックスに指定された数値を yoso に代入する
     let yoso = 4;
+
+    kaisu = kaisu + 1;
+    console.log(kaisu + "回目の予想: " + yoso);
   
 
 
@@ -28,12 +31,19 @@ function hantei() {
             // 課題3-1における出力先はコンソール
 
             console.log("正解です．おめでとう!");
+            kaisu = 4;
         }
         else if(kotae < yoso){
-            console.log("まちがい．答えはもっと小さいですよ");
+            if(kaisu == 3)
+                console.log("まちがい．残念でした答えは " + kotae + " です．");
+            else
+                console.log("まちがい．答えはもっと小さいですよ");
         }
         else{
-            console.log("まちがい．答えはもっと大きいですよ");
+            if(kaisu == 3)
+                console.log("まちがい．残念でした答えは " + kotae + " です．");
+            else
+                console.log("まちがい．答えはもっと大きいですよ");
         }
 
     }
@@ -41,7 +51,6 @@ function hantei() {
         console.log("答えは " + kotae + " でした．すでにゲームは終わっています");
     }
 
-    kaisu = kaisu + 1;
 
     
 }
