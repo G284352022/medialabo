@@ -95,8 +95,20 @@ let data = {
 1100 ... 福祉
 */
 
-for(Name of data.list.g1){
-  console.log(Name.title);//番組名を出力
+for(let g of data.list.g1){
+  console.log(g.title);//番組名を出力
+}
+
+for(let g of data.list.g1){
+  console.log("データ項目: ");
+
+  console.log(g.start_time);
+  console.log(g.end_time);
+  console.log(g.service.name);
+  console.log(g.title);
+  console.log(g.subtitle);
+  console.log(g.content);
+  console.log(g.act);
 
 }
 
