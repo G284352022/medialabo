@@ -15,11 +15,92 @@ let data = [
 
 // 練習4-2 メッセージ追加プログラム
 
+//html内のid = ex42を検索
+let pra42 = document.querySelector('h2#ex42');
+
+//p42というp要素を生成
+let p42 = document.createElement('p');
+
+//p42を<p>写真表と都市の緯度軽度のページです</p>にする
+p42.textContent = '写真表と都市の緯度軽度のページです';
+
+pra42.insertAdjacentElement('afterend', p42);
+
+
+//CSSの編集
+
+p42 = document.querySelector('p');
+//p要素を検索
+
+p42.style = 'text-emphasis: sesame green;';
+//p42の位置にプロパティ設定を施す
+
+
 
 // 練習4-3 写真表作成プログラム
 
+//繰り返し使用する変数を作成
+
+	//img要素を作成
+	let img43t = document.createElement('img');
+	let img43j = document.createElement('img');
+	let img43h = document.createElement('img');
+
+	//p要素を作成. この後、img要素を格納する
+	let p43t = document.createElement('p');
+	let p43j = document.createElement('p');
+	let p43h = document.createElement('p');
+
+	//img要素を追加する位置を検索
+	let div43 = document.querySelector('div#phototable');
+
+//以下、taro,jiro,hanako,の3回分繰り返す
+
+//taro
+	//img43に<src="taro.png">を設定
+	img43t.setAttribute('src', "taro.png");
+
+	//p43内にimg43(taro.png)を追加
+	p43t.insertAdjacentElement('beforeend', img43t);
+
+
+	//div#phototableの位置に、img要素の入ったp要素を追加
+	div43.insertAdjacentElement('beforeend', p43t);
+
+//jiro
+	//img43に<src="jiro.png">を設定
+	img43j.setAttribute('src', "jiro.png");
+
+	//p43内にimg43(jiro.png)を追加
+	p43j.insertAdjacentElement('beforeend', img43j);
+
+
+	//div#phototableの位置に、img要素の入ったp要素を追加
+	div43.insertAdjacentElement('beforeend', p43j);
+
+//hanako
+	//img43に<src="hanako.png">を設定
+	img43h.setAttribute('src', "hanako.png");
+
+	//p43内にimg43(hanako.png)を追加
+	p43h.insertAdjacentElement('beforeend', img43h);
+
+
+	//div#phototableの位置に、img要素の入ったp要素を追加
+	div43.insertAdjacentElement('beforeend', p43h);
+
+
+
 
 // 練習4-4 箇条書き削除プログラム
+
+//ul#location要素の中のliを全て検索
+let ul44 = document.querySelectorAll('ul#location > li');
+
+//削除
+for(let li44 of ul44){
+	li44.remove();
+}
 
 
 // 練習4-5 箇条書き追加プログラム
