@@ -105,3 +105,16 @@ for(let li44 of ul44){
 
 // 練習4-5 箇条書き追加プログラム
 
+
+//都市名をその緯度軽度を箇条書きする
+for(let ul45 of data){
+	//要素の位置はul#location
+	let posi45 = document.querySelector('ul#location');
+
+	//li要素を作成、中身を作成
+	let li45 = document.createElement('li');
+	li45.textContent = ul45.name +" ... 緯度: " + ul45.lat + ",  経度: " + ul45.lng;
+
+	//liを追加
+	posi45.insertAdjacentElement('beforeend', li45);
+}
