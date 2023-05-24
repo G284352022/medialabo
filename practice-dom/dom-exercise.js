@@ -39,7 +39,7 @@ p42.style = 'text-emphasis: sesame green;';
 
 // 練習4-3 写真表作成プログラム
 
-//繰り返し使用する変数を作成
+//使用する変数を作成
 
 	//img要素を作成
 	let img43t = document.createElement('img');
