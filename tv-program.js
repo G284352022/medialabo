@@ -95,20 +95,77 @@ let data = {
 1100 ... 福祉
 */
 
-for(let g of data.list.g1){
-  console.log(g.title);//番組名を出力
+let i = 0;
+
+//番組名を表示する位置を検索
+let title_posi = document.querySelector('tbody#tv_p');
+
+//td要素を格納するtr要素を作成
+let tv_pro = [];
+for(i = 0; i <= 1; i++){
+  tv_pro[i] = document.createElement('tr');
+
 }
 
-for(let g of data.list.g1){
-  console.log("データ項目: ");
+//番組名を入れるtd要素を作成
+let title = [];
+for(i = 0; i <= 1; i++){
+  title[i] = document.createElement('td');
 
-  console.log(g.start_time);
-  console.log(g.end_time);
-  console.log(g.service.name);
-  console.log(g.title);
-  console.log(g.subtitle);
-  console.log(g.content);
-  console.log(g.act);
+}
+
+i = 0;
+for(let g of data.list.g1){
+
+  //番組名を入れる要素を作成
+  title[i].textContent = g.title
+
+
+  //tdをtrに格納
+  tv_pro[i].insertAdjacentElement('beforeend', title[i]);
+
+  //htmlにtv_pro(tr要素)を追加
+  title_posi.insertAdjacentElement('beforeend', tv_pro[i]);
+
+  i++;
+}
+
+//以下のデータ項目を追加する位置を検索
+let dataj_posi = document.querySelector('placeholder#dataj');
+
+//データ項目が格納されたp要素
+let dataj = [];
+let j;
+for(i = 0; i <= 7; i++){
+  dataj[i] = [];
+  for(j = 0; j <= 1; j++){
+      dataj[i][j] = document.createElement('p');
+
+  }
+
+}
+
+j = 0;
+for(let g of data.list.g1){
+  //項目の要素の中身を作成
+  dataj[0][j].textContent = "データ項目: ";
+  dataj[1][j].textContent = g.start_time;
+  dataj[2][j].textContent = g.end_time;  
+  dataj[3][j].textContent = g.service.name;
+  dataj[4][j].textContent = g.title;
+  dataj[5][j].textContent = g.subtitle;
+  dataj[6][j].textContent = g.content;
+  dataj[7][j].textContent = g.act;
+ 
+  
+  //ページ上(html)に追加
+
+  for(i = 0; i < dataj.length; i++){
+    dataj_posi.insertAdjacentElement('beforeend', dataj[i][j]);
+
+
+  }
+  j++;
 
 }
 
