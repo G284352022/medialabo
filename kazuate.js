@@ -15,15 +15,25 @@ let a_posi = document.querySelector('p > span#answer');
 let r_posi = document.querySelector('p#result');
 
 
+let yoso;
 // 予想を4回実行する
 // 将来以下の hantei(); の4回の呼び出しを全て削除する
 // 代わりにここでは，ボタンを押したら hantei() を呼び出すイベント処理をする
-hantei();
+//5/25　変更済み
+
+//「回答」ボタンのイベントハンドラを登録
+let ans_posi = document.querySelector('button#ans');
+ans_posi.addEventListener('click', hantei);
+
+//入力された数値の位置を検索(hantei関数で使用)
+let yoso_posi = document.querySelector('input[name="yoso"]');
+
+
 
 // ボタンを押した後の処理をする関数 hantei() の定義
 function hantei() {
     // 将来ここでは 4 ではなくテキストボックスに指定された数値を yoso に代入する
-    let yoso = 4;
+    yoso = Number(yoso_posi.value);
 
     //回数の表示を変更する
         //kaisuの更新
