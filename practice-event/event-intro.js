@@ -5,7 +5,8 @@ let b1 = document.querySelector('button#blue');
 b1.addEventListener('click', changeH1ColorRed);
 
 //// 以下，練習5-2 でコードを追加
-
+b2 = document.querySelector('button#random');
+b2.addEventListener('click', changeBackgroundColorRandom);
 
 ////////////////////////////////////////////////////////
 // 2. イベントハンドラ（イベントが発生したら実行する関数）
@@ -26,7 +27,10 @@ function changeBackgroundColorRandom() {
 	// 色のプロパティ値を作る
 	let color = 'rgb(' + r + ',' + g + ',' + b + ')';
 
+	//位置を検索
 	let body = document.querySelector('body');
+
+	//bodyの背景色を変更
 	body.style.backgroundColor = color;
 }
 
