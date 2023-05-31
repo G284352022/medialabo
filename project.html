@@ -11,8 +11,35 @@
     <body>
         <h1>番組検索</h1>
 
-        <p>Search <input type="form"></p>
+        <label for="tv_search">Search</label>
+        <input type="search" name="tv_search" id="tv_search">
+        <button id="print">検索</button>
 
+<!--      
+    プルダウンを使う場合
+    <label for="tv_search">プルダウンメニュー</label>
+        <select name="tv_search" id="tv_search">
+            <option value="">チャンネル または ジャンル を選んでください</option>
+            <option value="g1">NHK総合1</option>
+            <option value="e1">Eテレ1</option>
+
+            
+            <option value="news">ニュース・報道</option>
+            <option value="spo">スポーツ</option>
+            <option value="jou">情報・ワイドショー</option>
+            <option value="drama">ドラマ</option>
+            <option value="msic">音楽</option>
+            <option value="vari">バラエティ</option>
+            <option value="mo">映画</option>
+            <option value="anime">アニメ</option>
+            <option value="docu">ドキュメンタリー・教養</option>
+            <option value="the">劇場・公演</option>
+            <option value="hobby">趣味・教育</option>
+            <option value="wel">福祉</option>
+
+        </select>
+-->     
+        
         <placeholder id="dataj">
             
         </placeholder>
@@ -20,6 +47,12 @@
             <thead>
                 <tr>
                     <th colspan="1">番組名</th>
+                    <th>開始時刻</th>
+                    <th>終了時刻</th>
+                    <th>チャンネル</th>
+                    <th>サブタイトル</th>
+                    <th>説明</th>
+                    <th>出演者</th>
                 </tr>
 
             </thead>
