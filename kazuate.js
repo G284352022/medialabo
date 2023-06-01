@@ -58,13 +58,13 @@ function hantei() {
             kaisu = 4;
         }
         else if(kotae < yoso){
-            if(kaisu == 3)
+            if(kaisu === 3)
                 r_posi.textContent = 'まちがい．残念でした答えは ' + kotae + ' です．';
             else
                 r_posi.textContent = 'まちがい．答えはもっと小さいですよ';
         }
         else{
-            if(kaisu == 3)
+            if(kaisu === 3)
                 r_posi.textContent = 'まちがい．残念でした答えは ' + kotae + ' です．';
             else
                 r_posi.textContent = 'まちがい．答えはもっと大きいですよ';
