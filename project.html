@@ -6,47 +6,64 @@
             番組検索
         </title>
         <link rel="stylesheet" href="project.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
         <script src="tv-program.js" defer></script>
     </head>
     <body>
         <h1>番組検索</h1>
+        <p>チャンネル、ジャンルを選択し、「検索」ボタンをクリックしてください。</p>
 
-        <label for="tv_search">Search</label>
-        <input type="search" name="tv_search" id="tv_search">
+        <label for="s_tv_search"></label>
+            <select name="s_tv_search" id="s_tv_search">
+                <option value="">チャンネルを選んでください</option>
+
+                <option value="g1">NHK総合1</option>
+                <option value="e1">Eテレ1</option>
+
+            </select>
+
+        <!--
+            ジャンルで検索、valueは以下の通り
+            0000 ... ニュース・報道
+            0100 ... スポーツ
+            0205 ... 情報・ワイドショー
+            0300 ... ドラマ
+            0409 ... 音楽
+            0502 ... バラエティ
+            0600 ... 映画
+            0700 ... アニメ
+            0800 ... ドキュメンタリー・教養
+            0903 ... 劇場・公演
+            1000 ... 趣味・教育
+            1100 ... 福祉
+
+        -->
+
+        <label for="g_tv_search"></label>
+            <select name="g_tv_search" id="g_tv_search">
+                <option value="">ジャンルを選んでください</option>
+                <option value="0000">ニュース・報道</option>
+                <option value="0100">スポーツ</option>
+                <option value="0205">情報・ワイドショー</option>
+                <option value="0300">ドラマ</option>
+                <option value="0409">音楽</option>
+                <option value="0502">バラエティ</option>
+                <option value="0600">映画</option>
+                <option value="0700">アニメ</option>
+                <option value="0800">ドキュメンタリー・教養</option>
+                <option value="0903">劇場・公演</option>
+                <option value="1000">趣味・教育</option>
+                <option value="1100">福祉</option>
+
+            </select>
         <button id="print">検索</button>
+        <p></p>
 
-<!--      
-    プルダウンを使う場合
-    <label for="tv_search">プルダウンメニュー</label>
-        <select name="tv_search" id="tv_search">
-            <option value="">チャンネル または ジャンル を選んでください</option>
-            <option value="g1">NHK総合1</option>
-            <option value="e1">Eテレ1</option>
 
-            
-            <option value="news">ニュース・報道</option>
-            <option value="spo">スポーツ</option>
-            <option value="jou">情報・ワイドショー</option>
-            <option value="drama">ドラマ</option>
-            <option value="msic">音楽</option>
-            <option value="vari">バラエティ</option>
-            <option value="mo">映画</option>
-            <option value="anime">アニメ</option>
-            <option value="docu">ドキュメンタリー・教養</option>
-            <option value="the">劇場・公演</option>
-            <option value="hobby">趣味・教育</option>
-            <option value="wel">福祉</option>
-
-        </select>
--->     
-        
-        <placeholder id="dataj">
-            
-        </placeholder>
         <table border="1">
             <thead>
                 <tr>
-                    <th colspan="1">番組名</th>
+                    <th>番組名</th>
                     <th>開始時刻</th>
                     <th>終了時刻</th>
                     <th>チャンネル</th>
@@ -62,5 +79,6 @@
 
 
         </table>
+
     </body>
 </html>

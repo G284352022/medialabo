@@ -150,16 +150,157 @@ for(let g of data.list.g1){
 
 //検索について
 
-/*
+
 let search_posi = document.querySelector('button#print');
 search_posi.addEventListener('click', search);
 
 
+
+let s, g;
 //検索結果の表示
 function search() {
-  let k = document.querySelector('input[name="tv_search"]');
-  //ユーザの入力をinに代入
-  let in = k.value;
+  let k1 = document.querySelector('select#s_tv_search');
+  let k2 = document.querySelector('select#g_tv_search');
+
+  //入力されたチャンネル、ジャンルを代入 → 検索時のURLで使用
+  s = k1.value;
+  g = k2.value;
+
+  sendRequest();
+  print_result();
 }
 
+
+// 通信を開始する処理
+
+
+function sendRequest(){
+  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/' + s + '-' + g + '-j.json';
+  //+で文字列をつなぐ
+
+  // 通信開始
+  axios.get(url)
+    .then(showResult)   // 通信成功
+    .catch(showError)   // 通信失敗
+    .then(finish);      // 通信の最後の処理
+}
+
+//通信が成功した場合
+
+let redata;
+
+function showResult(resp) {
+  //サーバから送られてきたデータを出力
+
+  redata = resp.data;
+
+  //dataが文字列型なら、オブジェクトに変換する
+  if (typeof redata === 'string') {
+    redata = JSON.parse(redata);
+  }
+
+  //結果の確認用
+  console.log(redata);
+  console.log(s);
+  console.log(g);
+
+  //検索結果の処理、表示
+
+
+
+}
+
+
+//通信エラーが発生した場合
+function showError(err){
+  console.log(err);
+}
+
+//通信の最後に実行する処理
+function finish(){
+  console.log('Ajax 通信が終わりました');
+}
+
+
+
+//////////////////検索結果の確認/////////////////
+
+
+function print_result(){
+  /*
+  テスト用
+
+  let newdata_posi = document.querySelector('p#re');
+
+	let newdata = document.createElement('p');
+	newdata.textContent = redata.list.e1;
+
+	newdata_posi.insertAdjacentElement('beforeend', newdata);
+
 */
+////////////////(上のコードを一旦コピー)/////////////////
+
+  i = 0;
+
+  //表の位置を検索
+  data_posi = document.querySelector('tbody#tv_p');
+
+  //元の検索結果を削除
+  let tr_posi = document.querySelectorAll('tbody#tv_p > tr');
+
+  for(let b_re of tr_posi){
+    b_re.remove();
+  }
+  
+  
+  
+  //td要素を格納するtr要素、iの上限 = 番組数-1
+  let newtr_data = [];
+  for(i = 0; i <= 1; i++){
+    newtr_data[i] = document.createElement('tr');
+  
+  }
+  
+  //データ項目が入ったtd要素 
+  let newtd_data = [];
+  let j;
+  for(i = 0; i <= 1; i++){
+    newtd_data[i] = [];
+    for(j = 0; j <= 6; j++){
+        newtd_data[i][j] = document.createElement('td');
+  
+    }
+  
+  }
+  
+  i = 0;
+
+  //if文でe1g1を分ける
+
+  for(let g of redata.list.e1){
+    //項目の要素の中身を作成
+    newtd_data[i][0].textContent = g.title;
+    newtd_data[i][1].textContent = g.start_time;
+    newtd_data[i][2].textContent = g.end_time;  
+    newtd_data[i][3].textContent = g.service.name;
+    newtd_data[i][4].textContent = g.subtitle;
+    newtd_data[i][5].textContent = g.content;
+    newtd_data[i][6].textContent = g.act;
+   
+    //上のデータをtrに格納
+  
+  
+    for(j = 0; j <= 6; j++){
+      newtr_data[i].insertAdjacentElement('beforeend', newtd_data[i][j]);
+  
+    }
+  
+    //ページ上(html)に追加
+    data_posi.insertAdjacentElement('beforeend', newtr_data[i]);
+  
+    i++;
+  
+  }
+  
+}
+
