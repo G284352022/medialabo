@@ -167,7 +167,6 @@ function search() {
   g = k2.value;
 
   sendRequest();
-  print_result();
 }
 
 
@@ -187,6 +186,8 @@ function sendRequest(){
 
 //通信が成功した場合
 
+
+//サーバから送られたデータを代入
 let redata;
 
 function showResult(resp) {
@@ -205,6 +206,7 @@ function showResult(resp) {
   console.log(g);
 
   //検索結果の処理、表示
+  print_result(redata);
 
 
 
@@ -242,9 +244,6 @@ function print_result(){
 
   i = 0;
 
-  //表の位置を検索
-  data_posi = document.querySelector('tbody#tv_p');
-
   //元の検索結果を削除
   let tr_posi = document.querySelectorAll('tbody#tv_p > tr');
 
@@ -254,53 +253,94 @@ function print_result(){
   
   
   
-  //td要素を格納するtr要素、iの上限 = 番組数-1
+  //td要素を格納するtr要素
   let newtr_data = [];
-  for(i = 0; i <= 1; i++){
-    newtr_data[i] = document.createElement('tr');
-  
-  }
   
   //データ項目が入ったtd要素 
   let newtd_data = [];
   let j;
-  for(i = 0; i <= 1; i++){
-    newtd_data[i] = [];
-    for(j = 0; j <= 6; j++){
-        newtd_data[i][j] = document.createElement('td');
-  
-    }
-  
-  }
-  
   i = 0;
 
-  //if文でe1g1を分ける
+  if(s == "g1"){
+    for(let g of redata.list.e1){
+      
+      //td要素を格納するtr要素
+      newtr_data[i] = document.createElement('tr');
 
-  for(let g of redata.list.e1){
-    //項目の要素の中身を作成
-    newtd_data[i][0].textContent = g.title;
-    newtd_data[i][1].textContent = g.start_time;
-    newtd_data[i][2].textContent = g.end_time;  
-    newtd_data[i][3].textContent = g.service.name;
-    newtd_data[i][4].textContent = g.subtitle;
-    newtd_data[i][5].textContent = g.content;
-    newtd_data[i][6].textContent = g.act;
-   
-    //上のデータをtrに格納
-  
-  
-    for(j = 0; j <= 6; j++){
-      newtr_data[i].insertAdjacentElement('beforeend', newtd_data[i][j]);
-  
-    }
-  
-    //ページ上(html)に追加
-    data_posi.insertAdjacentElement('beforeend', newtr_data[i]);
-  
-    i++;
-  
+      //tr1つにつき7項目
+      newtd_data[i] = [];
+      for(j = 0; j <= 6; j++){
+          newtd_data[i][j] = document.createElement('td');
+    
+      }
+
+      
+      //項目の要素の中身を作成
+      newtd_data[i][0].textContent = g.title;
+      newtd_data[i][1].textContent = g.start_time;
+      newtd_data[i][2].textContent = g.end_time;  
+      newtd_data[i][3].textContent = g.service.name;
+      newtd_data[i][4].textContent = g.subtitle;
+      newtd_data[i][5].textContent = g.content;
+      newtd_data[i][6].textContent = g.act;
+    
+      //上のデータをtrに格納
+    
+    
+      for(j = 0; j <= 6; j++){
+        newtr_data[i].insertAdjacentElement('beforeend', newtd_data[i][j]);
+    
+      }
+    
+      //ページ上(html)に追加
+      data_posi.insertAdjacentElement('beforeend', newtr_data[i]);
+    
+      i++;
+    
+    }  
   }
+
   
+  if(s == "e1"){
+    for(let g of redata.list.e1){
+      
+      //td要素を格納するtr要素
+      newtr_data[i] = document.createElement('tr');
+
+      //tr1つにつき7項目
+      newtd_data[i] = [];
+      for(j = 0; j <= 6; j++){
+          newtd_data[i][j] = document.createElement('td');
+    
+      }
+
+      
+      //項目の要素の中身を作成
+      newtd_data[i][0].textContent = g.title;
+      newtd_data[i][1].textContent = g.start_time;
+      newtd_data[i][2].textContent = g.end_time;  
+      newtd_data[i][3].textContent = g.service.name;
+      newtd_data[i][4].textContent = g.subtitle;
+      newtd_data[i][5].textContent = g.content;
+      newtd_data[i][6].textContent = g.act;
+    
+      //上のデータをtrに格納
+    
+    
+      for(j = 0; j <= 6; j++){
+        newtr_data[i].insertAdjacentElement('beforeend', newtd_data[i][j]);
+    
+      }
+    
+      //ページ上(html)に追加
+      data_posi.insertAdjacentElement('beforeend', newtr_data[i]);
+    
+      i++;
+    
+    }
+    
+  }
+    
+ 
 }
 
