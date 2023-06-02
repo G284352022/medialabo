@@ -10,15 +10,15 @@ h1{
 p{
     /*background-color: #ccffcc;*/
     padding: 10px 0px 10px 0px;
-    text-align: left;
+    text-align: center;
 
 
 }
 
 p#ex{
-    background-color: #d3c1a0;
+    background-color: #e9dac0;
 }
 
 p#search_result{
-    background-color: orange;
+    background-color: rgb(255, 223, 162);
 }
