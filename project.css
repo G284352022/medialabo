@@ -14,3 +14,11 @@ p{
 
 
 }
+
+p#ex{
+    background-color: #d3c1a0;
+}
+
+p#search_result{
+    background-color: orange;
+}

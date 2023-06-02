@@ -100,6 +100,8 @@ let i = 0;
 //表の位置を検索
 let data_posi = document.querySelector('tbody#tv_p');
 
+/*
+//ボタン設置後に使わなくなった
 
 //td要素を格納するtr要素、iの上限 = 番組数-1
 let tr_data = [];
@@ -146,27 +148,41 @@ for(let g of data.list.g1){
 
 }
 
-
+*/
 
 //検索について
 
+//検索結果の表示位置
+let search_r_posi = document.querySelector('p#search_result');
 
+
+//検索ボタンによるイベント
 let search_posi = document.querySelector('button#print');
 search_posi.addEventListener('click', search);
 
 
 
-let s, g;
+let ser, genre;
 //検索結果の表示
 function search() {
   let k1 = document.querySelector('select#s_tv_search');
   let k2 = document.querySelector('select#g_tv_search');
 
   //入力されたチャンネル、ジャンルを代入 → 検索時のURLで使用
-  s = k1.value;
-  g = k2.value;
+  ser = k1.value;
+  genre = k2.value;
 
-  sendRequest();
+  //検索時に、チャンネルまたはジャンルが未入力の場合は文を表示、通信はしない
+
+  if(ser === "" || genre === ""){
+    search_r_posi.textContent = "チャンネルとジャンルを選択してください。";
+  }
+  else{
+    search_r_posi.textContent = "";
+    sendRequest();
+ 
+  }
+
 }
 
 
@@ -174,7 +190,7 @@ function search() {
 
 
 function sendRequest(){
-  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/' + s + '-' + g + '-j.json';
+  let url='https://www.nishita-lab.org/web-contents/jsons/nhk/' + ser + '-' + genre + '-j.json';
   //+で文字列をつなぐ
 
   // 通信開始
@@ -202,11 +218,20 @@ function showResult(resp) {
 
   //結果の確認用
   console.log(redata);
-  console.log(s);
-  console.log(g);
+  console.log(ser);
+  console.log(genre);
 
-  //検索結果の処理、表示
-  print_result(redata);
+
+  //検索結果がなかった場合
+  //なるべく波風立てない文面でね...?
+  if(redata.list === null){
+    search_r_posi.textContent = "検索結果はありません。";
+  }
+  else{
+    //検索結果の処理、表示
+    print_result(redata);
+
+  }
 
 
 
@@ -216,6 +241,7 @@ function showResult(resp) {
 //通信エラーが発生した場合
 function showError(err){
   console.log(err);
+  search_r_posi.textContent = "通信エラーが発生しました。";
 }
 
 //通信の最後に実行する処理
@@ -227,6 +253,7 @@ function finish(){
 
 //////////////////検索結果の確認/////////////////
 
+let g;
 
 function print_result(){
   /*
@@ -261,16 +288,18 @@ function print_result(){
   let j;
   i = 0;
 
-  if(s == "g1"){
-    for(let g of redata.list.e1){
-      
+  if(ser == "g1"){
+    for(g of redata.list.g1){
+      //showdata(g)
+
+
       //td要素を格納するtr要素
       newtr_data[i] = document.createElement('tr');
 
       //tr1つにつき7項目
       newtd_data[i] = [];
       for(j = 0; j <= 6; j++){
-          newtd_data[i][j] = document.createElement('td');
+        newtd_data[i][j] = document.createElement('td');
     
       }
 
@@ -301,8 +330,10 @@ function print_result(){
   }
 
   
-  if(s == "e1"){
-    for(let g of redata.list.e1){
+  if(ser == "e1"){
+    for(g of redata.list.e1){
+
+      //showdata(g)
       
       //td要素を格納するtr要素
       newtr_data[i] = document.createElement('tr');
@@ -310,7 +341,7 @@ function print_result(){
       //tr1つにつき7項目
       newtd_data[i] = [];
       for(j = 0; j <= 6; j++){
-          newtd_data[i][j] = document.createElement('td');
+        newtd_data[i][j] = document.createElement('td');
     
       }
 
@@ -338,9 +369,46 @@ function print_result(){
       i++;
     
     }
+
+    //入力がなかった時の処理
+    
     
   }
+
+/*
+function showdata{
+  newtr_data[i] = document.createElement('tr');
+
+  //tr1つにつき7項目
+  newtd_data[i] = [];
+  for(j = 0; j <= 6; j++){
+    newtd_data[i][j] = document.createElement('td');
+
+  }
+
+  
+  //項目の要素の中身を作成
+  newtd_data[i][0].textContent = g.title;
+  newtd_data[i][1].textContent = g.start_time;
+  newtd_data[i][2].textContent = g.end_time;  
+  newtd_data[i][3].textContent = g.service.name;
+  newtd_data[i][4].textContent = g.subtitle;
+  newtd_data[i][5].textContent = g.content;
+  newtd_data[i][6].textContent = g.act;
+
+  //上のデータをtrに格納
+
+
+  for(j = 0; j <= 6; j++){
+    newtr_data[i].insertAdjacentElement('beforeend', newtd_data[i][j]);
+
+  }
+
+  //ページ上(html)に追加
+  data_posi.insertAdjacentElement('beforeend', newtr_data[i]);
+
+}
     
- 
+ */
 }
 
