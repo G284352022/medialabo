@@ -221,9 +221,6 @@ function print_result(){
 
     if(ser == "g1"){
       for(let g of redata.list.g1){
-        //showdata(g)
-
-
         //td要素を格納するtr要素
         newtr_data[i] = document.createElement('tr');
 
@@ -262,10 +259,7 @@ function print_result(){
 
     
     if(ser == "e1"){
-      for(let g of redata.list.e1){
-
-        //showdata(g)
-        
+      for(let g of redata.list.e1){        
         //td要素を格納するtr要素
         newtr_data[i] = document.createElement('tr');
 
@@ -287,8 +281,7 @@ function print_result(){
         newtd_data[i][6].textContent = g.act;
       
         //上のデータをtrに格納
-      
-      
+        
         for(j = 0; j <= 6; j++){
           newtr_data[i].insertAdjacentElement('beforeend', newtd_data[i][j]);
       
@@ -298,7 +291,6 @@ function print_result(){
         data_posi.insertAdjacentElement('beforeend', newtr_data[i]);
       
         i++;
-
       
       }
 

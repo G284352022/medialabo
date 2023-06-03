@@ -20,5 +20,21 @@ p#ex{
 }
 
 p#search_result{
+    font-weight: bold;
     background-color: rgb(255, 223, 162);
+    border: 2px solid red;
+}
+
+table{
+    border-spacing: 2px 12px;
+}
+
+thead{
+    color: #f0f0f0;
+    background-color: rebeccapurple;
+}   
+
+tbody{
+    background-color: #f6ecda;
+    
 }
