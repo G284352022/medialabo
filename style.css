@@ -3,6 +3,8 @@ h1{
     text-align: center;
     color: #fdfdfd;
     background-color: #004000;
+    padding: 20px 0px 20px 0px;
+
 }
 
 h2{
@@ -55,4 +57,9 @@ a:link{
 
 a:visited{
     color: rebeccapurple;
+}
+
+div{
+    padding: 2px 0px 3em 0px;
+    
 }
